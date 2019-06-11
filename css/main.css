@@ -400,21 +400,18 @@ img {
 #about-a .about-info {
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "bio-img bio bio" "aw1 aw2 aw3";
+      grid-template-areas: "bio bio bio" "aw1 aw2 aw3";
   grid-gap: 1.2rem;
 }
 
 #about-a .bio-img {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
   grid-area: bio-img;
-  display: none;
 }
 
 #about-a .bio {
   -ms-grid-row: 1;
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
   grid-area: bio;
   border-left: 3px solid #1bc587;
   padding: 0.8rem;
