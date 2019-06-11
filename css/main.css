@@ -408,6 +408,7 @@ img {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: bio-img;
+  display: none;
 }
 
 #about-a .bio {
