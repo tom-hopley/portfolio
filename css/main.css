@@ -592,9 +592,22 @@ input:focus {
 #contact-a .text-fields {
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "name email" "subject phone" "message message";
+      grid-template-areas: "name email" "subject phone" "message message" "captcha captcha";
   grid-gap: 1.2rem;
   margin-bottom: 1.2rem;
+}
+
+#contact-a .text-fields .captcha {
+  -ms-grid-row: 4;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: captcha;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 #contact-a .text-fields .name-input {
