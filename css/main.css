@@ -737,7 +737,7 @@ input:focus {
         grid-template-columns: repeat(1, 1fr);
   }
   #contact-a .text-fields {
-        grid-template-areas: "name" "email" "phone" "subject" "message";
+        grid-template-areas: "name" "email" "phone" "subject" "message" "captcha";
   }
   #contact-b .contact-info {
     grid-gap: 1.5rem;
