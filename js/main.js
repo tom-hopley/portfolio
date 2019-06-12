@@ -4,7 +4,7 @@ const strings = {
 };
 
 document.addEventListener("scroll", () => {
-  if (window.pageYOffset > 100) {
+  if (window.pageYOffset > 10) {
     strings.nav.classList.add("nav-overlay-visible");
     strings.nav.classList.remove("nav-overlay-clear");
     strings.header.classList.add("header-overlay-extend");
