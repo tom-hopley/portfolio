@@ -61,7 +61,7 @@ taskListCard.addEventListener("click", function(e) {
     e.target.className === "btn-delete" ||
     e.target.parentNode.className === "btn-delete"
   ) {
-    const taskID = taskLI.dataset.id;
+    const taskID = e.target.parentNode.parentNode.dataset.id;
     console.log(taskID);
     tasks.splice(taskID, 1);
     localStorage.setItem("tasks", JSON.stringify(tasks));

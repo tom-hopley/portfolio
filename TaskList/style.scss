@@ -62,6 +62,9 @@
     line-height: 1.4;
     width: 25px;
     height: 25px;
+    i {
+      pointer-events: none;
+    }
     &:hover {
       color: #fff;
       background: #a21c1c;
