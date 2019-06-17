@@ -272,4 +272,21 @@ input[type="text"]::placeholder {
 .c-orange {
   background: #d69f00;
 }
+
+@media (max-width: 500px) {
+  .container {
+    width: 365px;
+    margin: 0.5rem auto;
+  }
+  .container .card {
+    padding: 0.5rem;
+  }
+  ul {
+    padding: 0.2rem;
+  }
+  ul li {
+    font-size: 1rem;
+    padding: 0.2rem;
+  }
+}
 /*# sourceMappingURL=style.css.map */

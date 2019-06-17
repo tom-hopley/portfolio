@@ -218,3 +218,20 @@ input[type="text"] {
 .c-orange {
   background: #d69f00;
 }
+@media (max-width: 500px) {
+  .container {
+    width: 365px;
+    margin: 0.5rem auto;
+
+    .card {
+      padding: 0.5rem;
+    }
+  }
+  ul {
+    padding: 0.2rem;
+    li {
+      font-size: 1rem;
+      padding: 0.2rem;
+    }
+  }
+}
