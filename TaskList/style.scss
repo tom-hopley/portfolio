@@ -58,6 +58,7 @@
     padding: 0 5px;
     border: 1px solid #fff;
     line-height: 1.4;
+    width: 23px;
     &:hover {
       background: #a21c1c;
       border-color: #fff;
@@ -113,7 +114,6 @@ ul {
     margin-bottom: 0.5rem;
     padding: 0.5rem 1rem;
     overflow-wrap: normal;
-
     &:hover {
       text-decoration: line-through;
     }
