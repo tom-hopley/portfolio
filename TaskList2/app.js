@@ -97,6 +97,7 @@ const addEventListeners = () => {
     if (value) {
       addTask(value);
       updateTasks();
+      dom.inputField.value = "";
     }
   });
 
