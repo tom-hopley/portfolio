@@ -64,6 +64,12 @@ i {
 #completed-text{
   text-decoration: line-through;
 }
+#clear-completed{
+  margin-top: 2rem;
+}
+.btn-container {
+  padding: 3rem;
+}
 .message span:hover {
   text-decoration: line-through;
 }

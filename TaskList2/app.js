@@ -34,6 +34,7 @@ const buttonClick = e => {
       tasks.push(completed[taskID]);
       completed.splice(taskID, 1);
       updateTasks();
+      break;
   }
 };
 
@@ -72,11 +73,15 @@ const updateTasks = () => {
   localStorage.completed = JSON.stringify(completed);
   clearUI();
   showTaskList();
-  if (tasks.length > 0) {
+  if (tasks.length > 0 || completed.length > 0) {
     dom.emptyText.classList.add("is-hidden");
-    console.log(tasks.length);
   } else {
     dom.emptyText.classList.remove("is-hidden");
+  }
+  if (completed.length > 0) {
+    dom.clearAll.classList.remove("is-hidden");
+  } else {
+    dom.clearAll.classList.add("is-hidden");
   }
 };
 
@@ -140,6 +145,10 @@ const addEventListeners = () => {
     } else if (e.target.id === "modal-save") {
       saveBtn();
     }
+  });
+  dom.clearAll.addEventListener("click", () => {
+    completed = [];
+    updateTasks();
   });
 };
 
