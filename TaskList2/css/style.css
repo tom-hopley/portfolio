@@ -114,17 +114,15 @@ i {
     border: 1px solid;
     border-left: 10px solid;
     opacity: 1;
+  }
+  .level-left {
+    padding: 0;
+    margin: auto;
+  }
+  .level-item {
     width: 100%;
-  }
-  .message-complete {
-    display: block;
-    justify-content: center;
-  }
-  .message-complete .level {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin: auto;
+    text-align: center;
   }
 
   .btn-restore {
