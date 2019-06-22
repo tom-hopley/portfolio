@@ -2,12 +2,14 @@ const dom = new DOM();
 let currentTask = 0;
 let tasks = [];
 
+// Task Controls
 const buttonClick = e => {
   e.preventDefault;
   const taskID = parseInt(e.target.dataset.id);
   if (e.target.classList.contains("delete-btn")) {
     tasks[taskID].removeTask(taskID);
   } else if (e.target.classList.contains("edit-btn")) {
+    // Opening up the Edit Modal and adding appling the correct task
     dom.taskEdit.classList.add("is-active");
     modalContent(taskID);
   } else if (e.target.classList.contains("up-btn")) {
@@ -25,19 +27,20 @@ const addTask = value => {
 
 const showTaskList = () => {
   tasks.forEach((element, id) => {
-    console.log(element);
     element.showTask(id);
   });
 };
 
 const clearUI = () => (dom.taskContainer.innerHTML = "");
 
+// For closing the Edit Modal
 const close = () => dom.taskEdit.classList.remove("is-active");
 
 const closeModal = () => {
   dom.taskEdit.classList.remove("is-active");
 };
 
+// Sets up the input field and select box to task values
 const modalContent = id => {
   dom.modalInput.value = tasks[id].text;
   currentTask = id;
@@ -46,6 +49,7 @@ const modalContent = id => {
   dom.modalColor.selectedIndex = currentColor;
 };
 
+// Reset of UI
 const updateTasks = () => {
   localStorage.tasks = JSON.stringify(tasks);
   clearUI();
@@ -58,6 +62,7 @@ const updateTasks = () => {
   }
 };
 
+// Edit Modal's save button
 const saveBtn = () => {
   const selectedColor = parseInt(dom.modalColor.value);
   tasks[currentTask].text = dom.modalInput.value;
@@ -67,12 +72,15 @@ const saveBtn = () => {
   close();
 };
 
+// Click function for 'up' botton
 const shiftUp = taskID => {
   const targetObj = tasks[taskID];
   if (taskID === 0) {
+    // makes the array join at the ends
     tasks.shift();
     tasks.push(targetObj);
   } else {
+    // Shifting up
     tasks.splice(taskID - 1, 0, targetObj);
     tasks.splice(taskID + 1, 1);
   }
@@ -82,9 +90,11 @@ const shiftUp = taskID => {
 const shiftDown = taskID => {
   const targetObj = tasks[taskID];
   if (taskID === tasks.length - 1) {
+    // Joins array at the ends
     tasks.pop();
     tasks.unshift(targetObj);
   } else {
+    // Shifting Down
     tasks.splice(taskID + 2, 0, targetObj);
     tasks.splice(taskID, 1);
   }
@@ -92,6 +102,7 @@ const shiftDown = taskID => {
 };
 
 const addEventListeners = () => {
+  // Submit button for task input field
   dom.submitTask.addEventListener("click", () => {
     const value = dom.inputField.value;
     if (value) {
@@ -100,11 +111,11 @@ const addEventListeners = () => {
       dom.inputField.value = "";
     }
   });
-
+  // Click any button inside the task container
   dom.taskContainer.addEventListener("click", function(e) {
     buttonClick(e);
   });
-
+  // Buttons inside the Edit Modal
   dom.taskEdit.addEventListener("click", function(e) {
     if (e.target.id === "modal-close" || e.target.id === "modal-cancel") {
       close();
@@ -115,12 +126,13 @@ const addEventListeners = () => {
 };
 
 init = () => {
+  // Checks to see if there is saved localstorage
   if (!localStorage.tasks) {
     tasks = [];
   } else {
     tasks = [];
     taskJSON = JSON.parse(localStorage.tasks);
-
+    // Coverts JSON objects back into Item class objects
     taskJSON.forEach(element => {
       const item = new Item(element.text);
       item.color = element.color;
