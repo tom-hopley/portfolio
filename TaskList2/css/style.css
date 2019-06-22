@@ -115,4 +115,12 @@ i {
     cursor: pointer;
     width: 100%;
   }
+  .message-complete {
+    display: flex;
+    justify-content: flex-start;
+  }
+  .level {
+    display: flex;
+    flex-direction: column;
+  }
 }

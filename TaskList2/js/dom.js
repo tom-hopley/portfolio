@@ -33,7 +33,7 @@ class DOM {
     <div class="level-item">
       <div class="field has-addons">
       <p class="control mobile-btn"> <a data-id="${id}"  data-btntype="edit-btn" class="button is-inline">Edit</a></p>
-        <p class="control"> <a data-id="${id}"  data-btntype="up-btn" class="button is-inline"><i class="fas fa-chevron-up"></i>"</a></p>
+        <p class="control"> <a data-id="${id}"  data-btntype="up-btn" class="button is-inline"><i class="fas fa-chevron-up"></i></a></p>
         <p class="control"> <a data-id="${id}" data-btntype="down-btn" class="button is-inline"><i class="fas fa-chevron-down"></i></a></p>
         <p class="control mobile-btn"> <a data-id="${id}" data-btntype="delete-btn" class="button is-inline is-danger"><i class="fas fa-times"></i></a></p>
       </div>
@@ -50,7 +50,7 @@ class DOM {
   getCompletedHTML = (text, id) => {
     return `
     <article class="message" id="completed-${id}">
-    <div class="message-body level">
+    <div class="message-body message-complete level">
       <div class="level-left">
         <div id ="task-box"class="level-item has-text-centered">
           <span id="completed-text" data-btntype="task-text-complete" class="level-item is-size-4 ">${text}</span>
