@@ -25,7 +25,6 @@ i {
   border: 1px solid;
   border-left: 10px solid;
   opacity: 1;
-  cursor: pointer;
   width: 100%;
 }
 .main-container {
@@ -33,6 +32,7 @@ i {
   flex-direction: column;
   width: 90%;
   align-items: center;
+  margin: auto;
 }
 .hero-body {
   width: 50vw;
@@ -70,11 +70,15 @@ i {
 .btn-container {
   padding: 3rem;
 }
-.message span:hover {
+.line-through:hover {
   text-decoration: line-through;
+  cursor: pointer;
 }
-#task-text-complete {
+/* #task-text-complete {
   text-decoration: line-through;
+} */
+.message-complete {
+  opacity: 0.9;
 }
 @media (max-width: 768px) {
   .flexme {
@@ -92,10 +96,7 @@ i {
     text-align: center;
     color: red;
   }
-  .level-right {
-    display: flex;
-    flex-direction: column;
-  }
+
   .desktop-btn {
     display: none;
   }
@@ -107,20 +108,26 @@ i {
   }
   .message span {
     font-size: 1rem !important;
+    font-weight: bold;
   }
   .message-body:hover {
     border: 1px solid;
     border-left: 10px solid;
     opacity: 1;
-    cursor: pointer;
     width: 100%;
   }
   .message-complete {
-    display: flex;
-    justify-content: flex-start;
+    display: block;
+    justify-content: center;
   }
-  .level {
+  .message-complete .level {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btn-restore {
+    display: inline-block;
   }
 }

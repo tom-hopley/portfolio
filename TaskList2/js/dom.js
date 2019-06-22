@@ -21,7 +21,7 @@ class DOM {
     <div class="message-body level">
       <div class="level-left">
         <div id =""class="level-item has-text-centeredtask-box">
-          <span data-id="${id}"  data-btntype="task-text" class="level-item is-size-4 ">${text}</span>
+          <span data-id="${id}"  data-btntype="task-text" class="level-item is-size-4 line-through">${text}</span>
           </div>
       </div>
       <div class="level-right">
@@ -62,7 +62,7 @@ class DOM {
 
   <div class="level-right">
     <div class="level-item">
-      <p class="control desktop-btn"> <a data-id="${id}" data-btntype="restore-btn" class="button is-inline is-success">Restore</a></p>
+      <p class="control mobile-btn"> <a data-id="${id}" data-btntype="restore-btn" class="button is-inline is-success">Restore</a></p>
     </div>
   </div>
 </div>
