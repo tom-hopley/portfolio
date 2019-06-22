@@ -150,6 +150,15 @@ const addEventListeners = () => {
     completed = [];
     updateTasks();
   });
+  dom.burgerBtn.addEventListener("click", () => {
+    if (dom.burgerBtn.classList.contains("is-active")) {
+      dom.burgerBtn.classList.remove("is-active");
+      dom.burgerDiv.classList.remove("is-active");
+    } else {
+      dom.burgerBtn.classList.add("is-active");
+      dom.burgerDiv.classList.add("is-active");
+    }
+  });
 };
 
 const convertTasks = (arr, local) => {

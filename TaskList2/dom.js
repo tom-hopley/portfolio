@@ -11,6 +11,8 @@ class DOM {
   modalCancel = document.getElementById("modal-cancel");
   modalColor = document.getElementById("modal-color");
   emptyText = document.getElementById("empty-text");
+  burgerBtn = document.getElementById("navbar-btn");
+  burgerDiv = document.getElementById("navbarMenuHeroA");
   clearAll = document.getElementById("clear-all");
   colors = ["is-success", "is-info", "is-warning", "is-danger", "is-dark"];
   getTaskHTML = (text, color, id) => {
