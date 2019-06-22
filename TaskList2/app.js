@@ -1,34 +1,51 @@
 const dom = new DOM();
 let currentTask = 0;
 let tasks = [];
+let completed = [];
 
 // Task Controls
 const buttonClick = e => {
   e.preventDefault;
+
   const taskID = parseInt(e.target.dataset.id);
-  if (e.target.classList.contains("delete-btn")) {
-    tasks[taskID].removeTask(taskID);
-  } else if (e.target.classList.contains("edit-btn")) {
-    // Opening up the Edit Modal and adding appling the correct task
-    dom.taskEdit.classList.add("is-active");
-    modalContent(taskID);
-  } else if (e.target.classList.contains("up-btn")) {
-    shiftUp(taskID);
-  } else if (e.target.classList.contains("down-btn")) {
-    shiftDown(taskID);
+  const btnType = e.target.dataset.btntype;
+  console.log(e.target.dataset.btntype);
+  switch (btnType) {
+    case "delete-btn":
+      tasks[taskID].removeTask(taskID);
+      break;
+    case "edit-btn":
+      // Opening up the Edit Modal and adding appling the correct task
+      dom.taskEdit.classList.add("is-active");
+      modalContent(taskID);
+      break;
+    case "up-btn":
+      shiftUp(taskID);
+      break;
+    case "down-btn":
+      shiftDown(taskID);
+      break;
+    case "task-text":
+      completed.push(tasks[taskID]);
+      tasks.splice(taskID, 1);
+      updateTasks();
+      break;
+    case "restore-btn":
+      tasks.push(completed[taskID]);
+      completed.splice(taskID, 1);
+      updateTasks();
   }
 };
 
 const addTask = value => {
   const color = dom.colorSelect.value;
-  const item = new Item(value, color);
+  const item = new Item(value, color, false);
   tasks.push(item);
 };
 
 const showTaskList = () => {
-  tasks.forEach((element, id) => {
-    element.showTask(id);
-  });
+  tasks.forEach((element, id) => element.showTask(id));
+  completed.forEach((element, id) => element.showCompleted(id));
 };
 
 const clearUI = () => (dom.taskContainer.innerHTML = "");
@@ -52,6 +69,7 @@ const modalContent = id => {
 // Reset of UI
 const updateTasks = () => {
   localStorage.tasks = JSON.stringify(tasks);
+  localStorage.completed = JSON.stringify(completed);
   clearUI();
   showTaskList();
   if (tasks.length > 0) {
@@ -125,22 +143,26 @@ const addEventListeners = () => {
   });
 };
 
-init = () => {
-  // Checks to see if there is saved localstorage
-  if (!localStorage.tasks) {
-    tasks = [];
+const convertTasks = (arr, local) => {
+  if (!local) {
+    arr = [];
   } else {
-    tasks = [];
-    taskJSON = JSON.parse(localStorage.tasks);
+    const taskJSON = JSON.parse(local);
     // Coverts JSON objects back into Item class objects
     taskJSON.forEach(element => {
       const item = new Item(element.text);
       item.color = element.color;
       item.colorNum = element.colorNum;
-      tasks.push(item);
+      item.completed = element.completed;
+      arr.push(item);
     });
   }
+};
 
+init = () => {
+  // Checks to see if there is saved localstorage
+  convertTasks(tasks, localStorage.tasks);
+  convertTasks(completed, localStorage.completed);
   updateTasks();
   addEventListeners();
 };

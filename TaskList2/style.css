@@ -12,11 +12,11 @@ i {
   padding: 1rem;
 }
 .message {
-  width: 100%;;
+  width: 100%;
 }
 .message-body {
   border: 1px solid;
-  border-left: 10px solid #f4f4f4;
+  border-left: 10px solid;
   opacity: 0.8;
   width: 100%;
   overflow: hidden;
@@ -31,7 +31,7 @@ i {
 .main-container {
   display: flex;
   flex-direction: column;
-  width: 90%;;
+  width: 90%;
   align-items: center;
 }
 .hero-body {
@@ -56,12 +56,21 @@ i {
 .burger {
   color: #fff;
 }
-#task-box{
+#task-box {
   width: 50vw;
   overflow: hidden;
   margin-right: 2rem;
 }
-@media(max-width: 768px){
+#completed-text{
+  text-decoration: line-through;
+}
+.message span:hover {
+  text-decoration: line-through;
+}
+#task-text-complete {
+  text-decoration: line-through;
+}
+@media (max-width: 768px) {
   .flexme {
     margin: auto;
     display: flex;
@@ -70,11 +79,10 @@ i {
     align-items: center;
   }
   #submit-task {
-
     width: 100%;
-    margin: 1rem 0; 
+    margin: 1rem 0;
   }
-::placeholder {
+  ::placeholder {
     text-align: center;
     color: red;
   }
