@@ -20,10 +20,10 @@ const buttonClick = e => {
       modalContent(taskID);
       break;
     case "up-btn":
-      shiftUp(taskID);
+      shiftDown(taskID);
       break;
     case "down-btn":
-      shiftDown(taskID);
+      shiftUp(taskID);
       break;
     case "task-text":
       completed.push(tasks[taskID]);

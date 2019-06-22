@@ -32,7 +32,7 @@ class DOM {
       <div class="field has-addons">
       <p class="control mobile-btn"> <a data-id="${id}"  data-btntype="edit-btn" class="button is-inline">Edit</a></p>
         <p class="control"> <a data-id="${id}"  data-btntype="up-btn" class="button is-inline"><i class="fas fa-chevron-up"></i>"</a></p>
-        <p class="control"> <a data-id="${id}" id="down-btn" class="button is-inline"><i class="fas fa-chevron-down"></i></a></p>
+        <p class="control"> <a data-id="${id}" data-btntype="down-btn" class="button is-inline"><i class="fas fa-chevron-down"></i></a></p>
         <p class="control mobile-btn"> <a data-id="${id}" data-btntype="delete-btn" class="button is-inline is-danger"><i class="fas fa-times"></i></a></p>
       </div>
     </div>
