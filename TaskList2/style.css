@@ -12,13 +12,13 @@ i {
   padding: 1rem;
 }
 .message {
-  width: 60vw;
+  width: 100%;;
 }
 .message-body {
   border: 1px solid;
   border-left: 10px solid #f4f4f4;
   opacity: 0.8;
-  width: 60vw;
+  width: 100%;
   overflow: hidden;
 }
 .message-body:hover {
@@ -26,11 +26,12 @@ i {
   border-left: 10px solid;
   opacity: 1;
   cursor: pointer;
-  width: 60vw;
+  width: 100%;
 }
 .main-container {
   display: flex;
   flex-direction: column;
+  width: 90%;;
   align-items: center;
 }
 .hero-body {
@@ -38,10 +39,56 @@ i {
 }
 .flexme {
   justify-content: flex-start;
+  width: 50%;
 }
-#color-select {
-  margin-left: 1rem;
+#submit-task {
+  margin-right: 1rem;
 }
 #modal-save {
   margin-left: 1rem;
+}
+.mobile-btn {
+  display: none;
+}
+.desktop-btn {
+  display: block;
+}
+.burger {
+  color: #fff;
+}
+#task-box{
+  width: 50vw;
+  overflow: hidden;
+  margin-right: 2rem;
+}
+@media(max-width: 768px){
+  .flexme {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #submit-task {
+
+    width: 100%;
+    margin: 1rem 0; 
+  }
+::placeholder {
+    text-align: center;
+    color: red;
+  }
+  .level-right {
+    display: flex;
+    flex-direction: column;
+  }
+  .desktop-btn {
+    display: none;
+  }
+  .mobile-btn {
+    display: block;
+  }
+  .hero-body {
+    width: 90vw;
+  }
 }
