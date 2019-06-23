@@ -1,42 +1,7 @@
 const dom = new DOM();
-let currentTask = 0;
+let currentTask = -1;
 let tasks = [];
 let completed = [];
-
-// Task Controls
-const buttonClick = e => {
-  e.preventDefault;
-
-  const taskID = parseInt(e.target.dataset.id);
-  const btnType = e.target.dataset.btntype;
-  console.log(e.target.dataset.btntype);
-  switch (btnType) {
-    case "delete-btn":
-      tasks[taskID].removeTask(taskID);
-      break;
-    case "edit-btn":
-      // Opening up the Edit Modal and adding appling the correct task
-      dom.taskEdit.classList.add("is-active");
-      modalContent(taskID);
-      break;
-    case "up-btn":
-      shiftDown(taskID);
-      break;
-    case "down-btn":
-      shiftUp(taskID);
-      break;
-    case "task-text":
-      completed.push(tasks[taskID]);
-      tasks.splice(taskID, 1);
-      updateTasks();
-      break;
-    case "restore-btn":
-      tasks.push(completed[taskID]);
-      completed.splice(taskID, 1);
-      updateTasks();
-      break;
-  }
-};
 
 const addTask = value => {
   const color = dom.colorSelect.value;
@@ -52,8 +17,6 @@ const showTaskList = () => {
 const clearUI = () => (dom.taskContainer.innerHTML = "");
 
 // For closing the Edit Modal
-const close = () => dom.taskEdit.classList.remove("is-active");
-
 const closeModal = () => {
   dom.taskEdit.classList.remove("is-active");
 };
@@ -85,14 +48,14 @@ const updateTasks = () => {
   }
 };
 
-// Edit Modal's save button
+// The Edit Modal's save button
 const saveBtn = () => {
   const selectedColor = parseInt(dom.modalColor.value);
   tasks[currentTask].text = dom.modalInput.value;
   tasks[currentTask].colorNum = selectedColor;
   tasks[currentTask].color = dom.colors[selectedColor];
   updateTasks();
-  close();
+  closeModal();
 };
 
 // Click function for 'up' botton
@@ -124,6 +87,42 @@ const shiftDown = taskID => {
   updateTasks();
 };
 
+// Task Controls
+const buttonClick = e => {
+  e.preventDefault();
+
+  const taskID = parseInt(e.target.dataset.id);
+  const btnType = e.target.dataset.btntype;
+  switch (btnType) {
+    case "delete-btn":
+      tasks[taskID].removeTask(taskID);
+      break;
+    case "edit-btn":
+      // Opening up the Edit Modal and adding appling the correct task
+      dom.taskEdit.classList.add("is-active");
+      modalContent(taskID);
+      break;
+    case "up-btn":
+      shiftDown(taskID);
+      break;
+    case "down-btn":
+      shiftUp(taskID);
+      break;
+    case "task-text":
+      // Puts a line-through for completed text and moves it to the end of the list
+      tasks[taskID].setTimeStamp();
+      completed.push(tasks[taskID]);
+      tasks.splice(taskID, 1);
+      updateTasks();
+      break;
+    case "restore-btn":
+      tasks.push(completed[taskID]);
+      completed.splice(taskID, 1);
+      updateTasks();
+      break;
+  }
+};
+
 const addEventListeners = () => {
   // Submit button for task input field
   dom.submitTask.addEventListener("click", () => {
@@ -135,21 +134,22 @@ const addEventListeners = () => {
     }
   });
   // Click any button inside the task container
-  dom.taskContainer.addEventListener("click", function(e) {
-    buttonClick(e);
-  });
+  dom.taskContainer.addEventListener("click", e => buttonClick(e));
+
   // Buttons inside the Edit Modal
-  dom.taskEdit.addEventListener("click", function(e) {
+  dom.taskEdit.addEventListener("click", e => {
     if (e.target.id === "modal-close" || e.target.id === "modal-cancel") {
-      close();
+      closeModal();
     } else if (e.target.id === "modal-save") {
       saveBtn();
     }
   });
+  // Button to clear all completed tasks
   dom.clearAll.addEventListener("click", () => {
     completed = [];
     updateTasks();
   });
+  // Mobile burger controls
   dom.burgerBtn.addEventListener("click", () => {
     if (dom.burgerBtn.classList.contains("is-active")) {
       dom.burgerBtn.classList.remove("is-active");
@@ -165,13 +165,14 @@ const convertTasks = (arr, local) => {
   if (!local) {
     arr = [];
   } else {
-    const taskJSON = JSON.parse(local);
     // Coverts JSON objects back into Item class objects
+    const taskJSON = JSON.parse(local);
     taskJSON.forEach(element => {
       const item = new Item(element.text);
       item.color = element.color;
       item.colorNum = element.colorNum;
       item.completed = element.completed;
+      item.timeStamp = element.timeStamp;
       arr.push(item);
     });
   }

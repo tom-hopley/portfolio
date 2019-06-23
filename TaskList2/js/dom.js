@@ -4,6 +4,7 @@ class DOM {
   submitTask = document.getElementById("submit-task");
   taskContainer = document.getElementById("task-container");
   completedContainer = document.getElementById("completed-container");
+  timeStamp = document.getElementById("timestamp");
   taskEdit = document.getElementById("task-edit");
   modalInput = document.getElementById("modal-text");
   modalClose = document.getElementById("modal-close");
@@ -47,13 +48,13 @@ class DOM {
 </div>
 </article>`;
   };
-  getCompletedHTML = (text, id) => {
+  getCompletedHTML = (text, id, timestamp) => {
     return `
     <article class="message" id="completed-${id}">
     <div class="message-body message-complete level">
       <div class="level-left">
         <div id ="task-box"class="level-item has-text-centered">
-          <span id="completed-text" data-btntype="task-text-complete" class="level-item is-size-4 ">${text}</span>
+          <span id="completed-text" data-btntype="task-text-complete" class="level-item is-size-4 ">${text}</span> <div id="timestamp">${timestamp}</div>
           </div>
       </div>
 

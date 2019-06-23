@@ -64,6 +64,16 @@ i {
 #completed-text {
   text-decoration: line-through;
 }
+#timestamp {
+  font-size: 0.8rem;
+  color: #999;
+  font-style: italic;
+  display: inline-block;
+}
+#task-box {
+  display: flex;
+  flex-direction: column;
+}
 #clear-completed {
   margin-top: 2rem;
 }
