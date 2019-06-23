@@ -60,9 +60,9 @@ class DOM {
 
 
 
-  <div class="level-right">
+  <div class="level-right" id="restore-btn-div">
     <div class="level-item">
-      <p class="control mobile-btn"> <a data-id="${id}" data-btntype="restore-btn" class="button is-inline is-success">Restore</a></p>
+      <p class="control"> <a data-id="${id}" data-btntype="restore-btn" class="button is-inline is-success">Restore</a></p>
     </div>
   </div>
 </div>
