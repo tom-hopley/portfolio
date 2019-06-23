@@ -35,8 +35,6 @@ class Item {
     const hours = function() {
       return (date.getHours() < 10 ? "0" : "") + date.getHours();
     };
-    this.timeStamp = `Completed on ${date.day}/${date.month}/${
-      date.year
-    } at ${hours()}:${min()}`;
+    this.timeStamp = `Completed on ${date.getDate()}/${date.getMonth()}/${date.getFullYear()} at ${hours()}:${min()}`;
   }
 }
