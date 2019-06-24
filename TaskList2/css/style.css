@@ -1,5 +1,5 @@
 html {
-  background: #f4f4f4;
+  background: #fff;
 }
 body {
   padding-bottom: 5rem;
@@ -13,17 +13,19 @@ i {
 }
 .message {
   width: 100%;
+  -webkit-box-shadow: 3px 6px 13px -5px rgba(0, 0, 0, 0.41);
+  -moz-box-shadow: 3px 6px 13px -5px rgba(0, 0, 0, 0.41);
+  box-shadow: 3px 6px 13px -5px rgba(0, 0, 0, 0.2);
 }
 .message-body {
-  border: 1px solid;
-  border-left: 10px solid;
+  border: 0;
+  border-top: 6px solid;
   opacity: 0.8;
   width: 100%;
   overflow: hidden;
 }
 .message-body:hover {
-  border: 1px solid;
-  border-left: 10px solid;
+  border-width: 6px 0 0 0 !important;
   opacity: 1;
   width: 100%;
 }
