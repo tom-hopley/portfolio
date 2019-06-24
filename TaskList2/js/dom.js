@@ -42,7 +42,7 @@ class DOM {
 
   <div class="level-right">
     <div class="level-item">
-      <p class="control desktop-btn"> <a data-id="${id}"  data-btntype="delete-btn" class="button is-inline is-danger">Remove</a></p>
+      <p class="control desktop-btn"> <a data-id="${id}"  data-btntype="delete-btn" class="button is-inline is-danger is-outlined">Remove</a></p>
     </div>
   </div>
 </div>
@@ -63,7 +63,7 @@ class DOM {
 
   <div class="level-right" id="restore-btn-div">
     <div class="level-item">
-      <p class="control"> <a data-id="${id}" data-btntype="restore-btn" class="button is-inline is-success">Restore</a></p>
+      <p class="control"> <a data-id="${id}" data-btntype="restore-btn" class="button is-inline is-success is-outlined">Restore</a></p>
     </div>
   </div>
 </div>
