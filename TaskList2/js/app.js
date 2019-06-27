@@ -155,7 +155,7 @@ const addEventListeners = () => {
   dom.burgerBtn.addEventListener("click", () => {
     if (dom.burgerBtn.classList.contains("is-active")) {
       deactivateElement(dom.burgerBtn);
-      activateElement(dom.burgerDiv);
+      deactivateElement(dom.burgerDiv);
     } else {
       activateElement(dom.burgerBtn);
       activateElement(dom.burgerDiv);
