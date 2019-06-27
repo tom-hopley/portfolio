@@ -9,12 +9,12 @@ class Item {
   makeTask(id) {
     return dom.getTaskHTML(this.text, this.color, id);
   }
-  makeCompleted(id) {
-    return dom.getCompletedHTML(this.text, id, this.timeStamp);
-  }
   showTask(id) {
     // Gets returned html element from maketask's getTaskHTML() call. is called in foreach loop by showTaskList()
     dom.taskContainer.insertAdjacentHTML("afterbegin", this.makeTask(id));
+  }
+  makeCompleted(id) {
+    return dom.getCompletedHTML(this.text, id, this.timeStamp);
   }
   showCompleted(id) {
     // The same function for the completed tasks section

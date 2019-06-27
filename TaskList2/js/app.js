@@ -16,10 +16,10 @@ const showTaskList = () => {
 
 const clearUI = () => (dom.taskContainer.innerHTML = "");
 
-// For closing the Edit Modal
-const closeModal = () => {
-  dom.taskEdit.classList.remove("is-active");
-};
+const showElement = element => element.classList.remove("is-hidden");
+const hideElement = element => element.classList.add("is-hidden");
+const activateElement = element => element.classList.add("is-active");
+const deactivateElement = element => element.classList.remove("is-active");
 
 // Sets up the input field and select box to task values
 const modalContent = id => {
@@ -30,22 +30,25 @@ const modalContent = id => {
   dom.modalColor.selectedIndex = currentColor;
 };
 
+const emptyTextDisplay = () => {
+  if (tasks.length > 0 || completed.length > 0) {
+    hideElement(dom.emptyText);
+  } else {
+    showElement(dom.emptyText);
+  }
+};
+
+const emptyBtnDisplay = () =>
+  completed.length > 0 ? showElement(dom.clearAll) : hideElement(dom.clearAll);
+
 // Reset of UI
 const updateTasks = () => {
   localStorage.tasks = JSON.stringify(tasks);
   localStorage.completed = JSON.stringify(completed);
   clearUI();
   showTaskList();
-  if (tasks.length > 0 || completed.length > 0) {
-    dom.emptyText.classList.add("is-hidden");
-  } else {
-    dom.emptyText.classList.remove("is-hidden");
-  }
-  if (completed.length > 0) {
-    dom.clearAll.classList.remove("is-hidden");
-  } else {
-    dom.clearAll.classList.add("is-hidden");
-  }
+  emptyTextDisplay();
+  emptyBtnDisplay();
 };
 
 // The Edit Modal's save button
@@ -55,7 +58,7 @@ const saveBtn = () => {
   tasks[currentTask].colorNum = selectedColor;
   tasks[currentTask].color = dom.colors[selectedColor];
   updateTasks();
-  closeModal();
+  deactivateElement(dom.taskEdit);
 };
 
 // Click function for 'up' botton
@@ -99,7 +102,7 @@ const buttonClick = e => {
       break;
     case "edit-btn":
       // Opening up the Edit Modal and adding appling the correct task
-      dom.taskEdit.classList.add("is-active");
+      activateElement(dom.taskEdit);
       modalContent(taskID);
       break;
     case "up-btn":
@@ -119,7 +122,6 @@ const buttonClick = e => {
       tasks.push(completed[taskID]);
       completed.splice(taskID, 1);
       updateTasks();
-      break;
   }
 };
 
@@ -139,7 +141,7 @@ const addEventListeners = () => {
   // Buttons inside the Edit Modal
   dom.taskEdit.addEventListener("click", e => {
     if (e.target.id === "modal-close" || e.target.id === "modal-cancel") {
-      closeModal();
+      deactivateElement(dom.taskEdit);
     } else if (e.target.id === "modal-save") {
       saveBtn();
     }
@@ -152,16 +154,16 @@ const addEventListeners = () => {
   // Mobile burger controls
   dom.burgerBtn.addEventListener("click", () => {
     if (dom.burgerBtn.classList.contains("is-active")) {
-      dom.burgerBtn.classList.remove("is-active");
-      dom.burgerDiv.classList.remove("is-active");
+      deactivateElement(dom.burgerBtn);
+      activateElement(dom.burgerDiv);
     } else {
-      dom.burgerBtn.classList.add("is-active");
-      dom.burgerDiv.classList.add("is-active");
+      activateElement(dom.burgerBtn);
+      activateElement(dom.burgerDiv);
     }
   });
 };
-
 const convertTasks = (arr, local) => {
+  // Checks to see if there is saved localstorage
   if (!local) {
     arr = [];
   } else {
@@ -179,7 +181,6 @@ const convertTasks = (arr, local) => {
 };
 
 init = () => {
-  // Checks to see if there is saved localstorage
   convertTasks(tasks, localStorage.tasks);
   convertTasks(completed, localStorage.completed);
   updateTasks();
