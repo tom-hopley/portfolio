@@ -82,6 +82,9 @@ i {
 .btn-container {
   padding: 3rem;
 }
+.line-through {
+  margin-right: 1rem;
+}
 .line-through:hover {
   text-decoration: line-through;
   cursor: pointer;
